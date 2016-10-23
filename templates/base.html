@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}BLOCK TITLE GOES HERE{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="static/styles.css">
+    </head>
+    <body>
+        {% if session['user_id'] is not defined %}
+        {% endif %}
+    </body>
+</html>
