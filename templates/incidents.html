@@ -2,10 +2,34 @@
 {% block title %}Welcome{% endblock %}
 {% block content %}
 
-{% for incident in incidents %}
-    li<{{incident.company_id}}</li>
-    li<{{incident.transcation_id}}</li>
-    li<{{incident.reported_at}}</li>
-    {% endfor %}
+<div>
+	<table>
+		<tr>
+			<th>User ID</th>
+			<th>Timestamp</th>
+			<th>Notes</th>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>20161023</td>
+			<td>Sam puts his arm around my shoulders for an uncomfortable amount of time.</td>
+		</tr>
+				<tr>
+			<td>1</td>
+			<td>20161023</td>
+			<td>Received your event.  Can you provide the time this most recently happened?</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>20161023</td>
+			<td>This happened this morning, at 10:30am</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>20161023</td>
+			<td>Sam puts his arm around my shoulders for an uncomfortable amount of time.</td>
+		</tr>
+
+
 
 {% endblock %}

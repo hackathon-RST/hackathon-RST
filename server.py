@@ -94,9 +94,10 @@ def create_new_incident():
 
 
 
-@app.route('/incidents/<inc_num>')
-def show_inc_details(inc_num):
+@app.route('/incidents/1')
+def show_inc_details():
     """Show details on each incident."""
+
 
     return render_template('incidents.html')
 
@@ -104,7 +105,7 @@ def show_inc_details(inc_num):
 if __name__ == '__main__':
     connect_to_db(app)
 
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
 
 
 
