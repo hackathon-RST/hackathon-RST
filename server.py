@@ -98,7 +98,7 @@ def create_new_incident():
 def show_inc_details(inc_num):
     """Show details on each incident."""
 
-    pass
+    return render_template('incidents.html')
 
 ############################################## 
 if __name__ == '__main__':

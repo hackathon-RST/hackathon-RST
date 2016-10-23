@@ -15,3 +15,12 @@ document.getElementById("ndt").value=dt+"/"+mn+"/"+yy
 document.getElementById("ndt").hidden=false;
 document.getElementById("dt").hidden=true;
 }
+
+
+$(document).ready(function(){
+      $('.photos').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      });
+    });
