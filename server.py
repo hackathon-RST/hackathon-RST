@@ -10,9 +10,10 @@ from model import (Users, UserType, Companies, Incidents, Transactions)
 
 import os
 
+key= os.environ['FLASK_SECRET']
 
 app = Flask(__name__)
-# app.secret_key = key
+app.secret_key = key
 app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
@@ -55,11 +56,53 @@ def create_new_user():
         return redirect('/users/' + user_url_id)
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """User login."""
+
+    if request.method == 'POST':
+        user_name = request.form.get('user-name')
+        password = request.form.get('password')
+
+        dbuser = Users.query.filter(Users.user_name == user_name).first()
+
+        if dbuser and dbuser.password == password:
+            flash('Log in successful!')
+            user_url_id = dbuser.user_id
+            session['user_id'] = user_url_id
+            user_url_id = str(dbuser.user_id)
+            return redirect('/users/' + user_url_id)
+        else:
+            flash('User name and password combination incorrect.')
+            return redirect('/login')
+    else:
+        return render_template('login.html')
+
+@app.route('/users/<user_id>')
+def show_user_info(user_id):
+    """Show user information"""
+
+    pass
+
+
+@app.route('/incidents/create_new')
+def create_new_incident():
+    """Create new incident to track/submit to HR."""
+
+    pass
+
+
+@app.route('/incidents/<inc_num>')
+def show_inc_details(inc_num):
+    """Show details on each incident."""
+
+    pass
+
 ############################################## 
 if __name__ == '__main__':
     connect_to_db(app)
 
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')
 
 
 
