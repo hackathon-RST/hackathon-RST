@@ -61,7 +61,7 @@ def login():
     """User login."""
 
     if request.method == 'POST':
-        user_name = request.form.get('user-name')
+        user_name = request.form.get('email-length')
         password = request.form.get('password')
 
         dbuser = Users.query.filter(Users.user_name == user_name).first()
