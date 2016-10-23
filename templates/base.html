@@ -2,17 +2,26 @@
 <html>
     <head>
         <title>{% block title %}BLOCK TITLE GOES HERE{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="static/styles.css">
-    </head>
-    <body>
-        
-        <div class="nav-bar">
-        <!-- <div class="login">
-            <button type="button"></button></div> -->
-        </div>
-    {% for message in get_flashed_messages() %}
-        {{ message }}
-        {% endfor %}
-    {% block content %} CONTENT IS HERE {% endblock %}
-</body>
-</html>
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="static/styles.css">
+        </head>
+        <body>
+            <nav class="navbar navbar-inverse">
+                {% if session['user_id'] is not defined %}
+                    <button type="button" class="btn btn-default navbar-btn sign-in-btn col-xs-offset-10">Sign in</button>
+                    <button type="button" class="btn btn-default navbar-btn register-btn">Register</button>
+                {% endif %}
+                <div class='logo'>Report@Work</div>
+                {% if session['user_id'] is defined %}
+                    <button type="button" class="btn btn-default navbar-btn sign-in-btn logout-btn col-xs-offset-10">Logout</button>
+                {% endif %}
+                
+                
+            </nav>
+            <!--  {% for message in get_flashed_messages() %}
+                {{ message }}
+            {% endfor %} -->
+            {% block content %} CONTENT IS HERE {% endblock %}
+        </body>
+    </html>

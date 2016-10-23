@@ -1,4 +1,4 @@
-from model import connect_to_db, db, Users, UserType, Companies, Incidents
+from model import connect_to_db, db, Users, Companies
 
 from server import app
 
@@ -21,6 +21,7 @@ def load_users():
 			db.session.add(user)
 			db.session.commit()
 
+
 def load_user_type():
 	"""load two types of users"""
 	with open('./seed_data/user_type.tsv', 'r+') as data:
@@ -33,18 +34,21 @@ def load_user_type():
 			db.session.add(user_type)
 			db.session.commit()
 
+
 def load_companies():
 	"""load companies into database"""
 
 	with open('./seed_data/companies.tsv', 'r+') as data:
 		for row in data:
 			row = row.rstrip()
+
 			name, address, hr_contact_info = row.split('\t')
 			companies = Companies(name=name,
 								address=address,
 								hr_contact_info=hr_contact_info)
 			db.session.add(companies)
 			db.session.commit()
+
 
 def load_incidents():
 	"""load all Incidents"""
@@ -58,9 +62,11 @@ def load_incidents():
 			db.session.add(incidents)
 			db.session.commit()
 
+
 if __name__ == '__main__':
 	load_user_type()
 	load_users()
 	load_companies()
 	# load_incidents()
+
 
