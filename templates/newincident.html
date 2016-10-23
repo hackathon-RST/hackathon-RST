@@ -2,8 +2,10 @@
 {% block title %}New Incident{% endblock %}
 {% block content %}
 
-<h1>Create and Submit a New Incident</h1>
 
+
+<div class="incident-div">
+    <h1>Create and Submit a New Incident</h1>
 <form action='/createincident' id="incident-form" method="POST">
     <label>Date: 
         <input type="date" id="dt" onchange="mydate1();" hidden/>
@@ -15,6 +17,8 @@
         <textarea rows="10" cols="53" name="description"></textarea><br>
     <input type="submit" value="Report-incident">
 </form>
+
+</div>
 
 
 
