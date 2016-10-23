@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}BLOCK TITLE GOES HERE{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="static/styles.css">
+    </head>
+    <body>
+        % for message in get_flashed_messages() %}
+           {{ message }}
+       {% endfor %}
+
+       {% block content %} CONTENT IS HERE {% endblock %}
+    </body>
+</html>
