@@ -1,4 +1,19 @@
-.nav-bar {
-    height: 20px;
-    background-color: black;
+.logo {
+    color: teal;
+    font-size: 80px;
+    text-align: center;
+}
+
+body {
+    background: teal;
+}
+
+.intro {
+    text-align: center;
+    
+}
+
+.intro p{
+    font-size: 30px;
+
 }
