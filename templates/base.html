@@ -9,8 +9,8 @@
         <body>
             <nav class="navbar navbar-inverse">
                 {% if session['user_id'] is not defined %}
-                    <button type="button" class="btn btn-default navbar-btn sign-in-btn col-xs-offset-10">Sign in</button>
-                    <button type="button" class="btn btn-default navbar-btn register-btn">Register</button>
+                    <button type="button" class="btn btn-default navbar-btn sign-in-btn col-xs-offset-10"><a href="/login">Sign in</a></button>
+                    <button type="button" class="btn btn-default navbar-btn register-btn"><a href="/register">Register</a></button>
                 {% endif %}
                 <div class='logo'>Report@Work</div>
                 {% if session['user_id'] is defined %}
