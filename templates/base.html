@@ -5,7 +5,10 @@
         <link rel="stylesheet" type="text/css" href="static/styles.css">
     </head>
     <body>
-        {% if session['user_id'] is not defined %}
-        {% endif %}
+        % for message in get_flashed_messages() %}
+           {{ message }}
+       {% endfor %}
+
+       {% block content %} CONTENT IS HERE {% endblock %}
     </body>
 </html>
