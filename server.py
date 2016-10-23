@@ -55,6 +55,29 @@ def create_new_user():
         return redirect('/users/' + user_url_id)
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """User login."""
+
+    if request.method == 'POST':
+        user_name = request.form.get('user-name')
+        password = request.form.get('password')
+
+        dbuser = Users.query.filter(Users.user_name == user_name).first()
+
+        if dbuser and dbuser.password == password:
+            flash('Log in successful!')
+            user_url_id = dbuser.user_id
+            session['user_id'] = user_url_id
+            user_url_id = str(dbuser.user_id)
+            return redirect('/users/' + user_url_id)
+        else:
+            flash('User name and password combination incorrect.')
+            return redirect('/login')
+    else:
+        return render_template('login.html')
+
+
 ############################################## 
 if __name__ == '__main__':
     connect_to_db(app)
