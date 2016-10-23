@@ -78,18 +78,20 @@ def login():
     else:
         return render_template('login.html')
 
-@app.route('/users/<user_id>')
-def show_user_info(user_id):
-    """Show user information"""
+# @app.route('/users/<user_id>')
+# def show_user_info(user_id):
+#     """Show user information"""
 
-    pass
+#     return render_template('')
 
 
-@app.route('/incidents/create_new')
+@app.route('/createincident', methods=['GET'])
 def create_new_incident():
     """Create new incident to track/submit to HR."""
 
-    pass
+    return render_template('newincident.html')
+
+
 
 
 @app.route('/incidents/<inc_num>')
