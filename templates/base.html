@@ -5,16 +5,20 @@
         <link rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
             <link rel="stylesheet" type="text/css" href="static/styles.css">
+            <link rel="stylesheet" href="css/gallery.theme.css">
+            <link rel="stylesheet" href="css/gallery.min.css">
         </head>
         <body>
             <nav class="navbar navbar-inverse">
-                {% if session['user_id'] is not defined %}
+                {% if session['user_id'] is defined %}
                     <button type="button" class="btn btn-default navbar-btn sign-in-btn col-xs-offset-10"><a href="/login">Sign in</a></button>
                     <button type="button" class="btn btn-default navbar-btn register-btn"><a href="/register">Register</a></button>
                 {% endif %}
                 <div class='logo'>Report@Work</div>
-                {% if session['user_id'] is defined %}
-                    <button type="button" class="btn btn-default navbar-btn sign-in-btn logout-btn col-xs-offset-10">Logout</button>
+                {% if session['user_id'] is not defined %}
+                 <button type="button" class="btn btn-default navbar-btn create-incident-btn col-xs-offset-9"><a href="/createincident">Report Incident</a></button>
+                 <button type="button" class="btn btn-default navbar-btn create-incident-btn"><a href="/incidents/<inc_num>">Incident Log</a></button>
+                    <button type="button" class="btn btn-default navbar-btn sign-in-btn logout-btn">Logout</button>
                 {% endif %}
                 
                 
@@ -25,4 +29,18 @@
             {% block content %} CONTENT IS HERE {% endblock %}
         </body>
          <script src="/static/incidents.js"></script>
+         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="slick/slick.min.js"></script>
+
+        <script type="text/javascript">
+    $(document).ready(function(){
+      $('.photos').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      });
+    });
+  </script>
+                
     </html>
