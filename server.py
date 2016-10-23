@@ -10,15 +10,16 @@ from model import (Users, UserType, Companies, Incidents, Transactions)
 
 import os
 
+
 app = Flask(__name__)
-app.secret_key = key
+# app.secret_key = key
 app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
 def show_homepage():
     """Homepage to show login screen."""
 
-    return render_template('homepage.html')
+    return render_template('main.html')
 
 @app.route('/register', methods=['GET'])
 def show_registration_form():
@@ -54,8 +55,11 @@ def create_new_user():
         return redirect('/users/' + user_url_id)
 
 
-    
+############################################## 
+if __name__ == '__main__':
+    connect_to_db(app)
 
+    app.run(debug=True, host='0.0.0.0')
 
 
 
