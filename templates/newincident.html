@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}New Incident{% endblock %}
+{% block content %}
+
+<h1>Create and Submit a New Incident</h1>
+
+<form action='/incidents/create_new' id="incident-form" method="POST">
+    <label>Date: 
+        <input type="date" id="dt" onchange="mydate1();" hidden/>
+        <input type="text" id="ndt"  onclick="mydate();" hidden />
+        <input type="button" Value="Date" onclick="mydate();" />
+    <label>Person/People involved:
+        <input type="text" id="person-involved" name="person-involved"></input></label><br>
+    <label>Description of the incident?: <br>
+        <textarea rows="10" cols="53" name="description"></textarea><br>
+    <input type="submit" value="Report-incident">
+</form>
+
+
+
+{% endblock %}
