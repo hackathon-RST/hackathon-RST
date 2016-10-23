@@ -11,15 +11,16 @@ class Users(db.Model):
 	user_id = db.Column(db.Integer, autoincrement = True, primary_key = True)
 	user_name = db.Column(db.String(64), nullable = False)
 	password = db.Column(db.String(64), nullable = False)
-	user_type_id = db.Column(db.Integer,db.ForeignKey('user_type.user_id'), nullable = False)
+	user_type_id = db.Column(db.Integer,db.ForeignKey('user_type.user_type_id'), nullable = False)
+	# phone_num = db.Column(db.String(20), nullable = False)
 
 class UserType(db.Model):
 	"""two types of users 1. women with complaint 2.HR/company"""
 
 	__tablename__ = "user_type"
 
-	user_id = db.Column(db.Integer,autoincrement = True, primary_key = True)
-	usertype = db.Column(db.String(15), nullable = False)
+	user_type_id = db.Column(db.Integer,autoincrement = True, primary_key = True)
+	user_type = db.Column(db.String(15), nullable = False)
 	# r = dd.Column(db.String(15), nullable = False)
 
 class Companies(db.Model):
@@ -43,6 +44,7 @@ class Incidents(db.Model):
 	reported_at = db.Column(db.String(64), nullable = False)
 	transaction_id = db.Column(db.Integer, db.ForeignKey('transactions.trans_id'))
 	#status = db.Column(db.String(64), nullable = True)
+	
 class Transactions(db.Model):
 	"""notations and comments made on each incident"""
 
@@ -61,6 +63,7 @@ def connect_to_db(app):
 	
 	db.app = app
 	db.init_app(app)
+	db.create_all()
 
 if __name__ == "__main__":
     
