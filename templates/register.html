@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Please register{% endblock %}
+{% block content %}
+
+<h1>New Users please register</h1>
+<form action='/register' id="login-form" method="POST">
+    <label>Email (username): 
+        <input type="text" id="email-length" name="email"></input></label><br>
+        <div id="error-email"></div>
+    <label>Password:
+        <input type="password" id="password-length" name="password"></input></label><br>
+        <div id="error-password"></div>
+    <label>Are you a HR representative?: 
+        <input type="radio" name="private" value=2>Yes
+        <input type="radio" name="private" value=1>No</br>
+    <input type="submit" value="Register Me">
+</form>
+
+{% endblock %}

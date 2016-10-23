@@ -1,19 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}
-Log In
-{% endblock %} 
+{% block title %}Login{% endblock %}
 {% block content %}
-<div class='container-fluid'>
-    <div class='row'>
-        <form class='col-xs-12 col-md-6 col-lg-6 form-group' action='/login' method='POST'>
-            <label for='field-user-name'>User Name:</label>
-                <input type='email' class='form-control' name='user-name' id='field-user-name' placeholder='User Name'></input>
-            <label for='field-password'>Password:</label>
-                <input type='password' class='form-control' name='password' id='field-password' placeholder='Password'></input>
-            <br>
-            <input type='submit' class='btn btn-default'></input>
+    <div class="intro">
+        <p>Login</p></div>
+        <form action='/login' id="login-form" method="POST">
+            <label>Username:
+                <input type="text" id="email-length" name="email" placeholder="Email"></input></label><br>
+            <label>Password:
+                <input type="password" name="password" placeholder="Password"></input></label><br>
+                <input type="submit" value="Log Me In">
         </form>
-    </div>
-</div>
-
+                
 {% endblock %}
