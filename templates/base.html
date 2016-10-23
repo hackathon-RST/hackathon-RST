@@ -5,10 +5,14 @@
         <link rel="stylesheet" type="text/css" href="static/styles.css">
     </head>
     <body>
-        % for message in get_flashed_messages() %}
-           {{ message }}
-       {% endfor %}
-
-       {% block content %} CONTENT IS HERE {% endblock %}
-    </body>
+        
+        <div class="nav-bar">
+        <!-- <div class="login">
+            <button type="button"></button></div> -->
+        </div>
+    {% for message in get_flashed_messages() %}
+        {{ message }}
+        {% endfor %}
+    {% block content %} CONTENT IS HERE {% endblock %}
+</body>
 </html>
