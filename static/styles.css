@@ -33,6 +33,11 @@ dt{
 }
 
 .table {
+    background-color: white;
+    width: 400px;
+    position: center;
+    margin: 0 auto;
+
 
     
 }
