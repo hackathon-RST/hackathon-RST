@@ -94,7 +94,7 @@ def create_new_incident():
 
 
 
-@app.route('/incidents/1')
+@app.route('/incidents')
 def show_inc_details():
     """Show details on each incident."""
 
