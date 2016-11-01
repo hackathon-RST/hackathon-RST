@@ -37,7 +37,16 @@ dt{
     width: 400px;
     position: center;
     margin: 0 auto;
-
-
     
+}
+
+.register-form {
+    width: 400px;
+    position: center;
+    margin: 0 auto;
+
+}
+
+.submit-btn {
+    margin: 0 auto;
 }
