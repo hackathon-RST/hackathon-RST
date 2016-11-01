@@ -32,10 +32,9 @@ def show_registration_form():
 def create_new_user():
     """Creates new user to store in database."""
 
-    user_fname = request.form.get('user_fname')
-    user_lname = request.form.get('user_lname')
-    user_name = request.form.get('user_name')
+    user_name = request.form.get('username')
     password = request.form.get('password')
+    user_type = request.form.get('user-type')
 
     #Queries user table in db for user_name provided by user.
     dbuser = Users.query.filter(Users.user_name == user_name).first()
@@ -44,10 +43,9 @@ def create_new_user():
         flash('This username has already been used.')
         return redirect('/register')
     else:
-        user = Users(user_fname=user_fname,
-                     user_lname=user_lname,
-                     user_name=user_name,
-                     password=password)
+        user = Users(user_name=user_name,
+                     password=password, 
+                     user_type=user_type)
         db.session.add(user)
         db.session.commit()
         flash('You have been created!')
@@ -78,11 +76,11 @@ def login():
     else:
         return render_template('login.html')
 
-# @app.route('/users/<user_id>')
-# def show_user_info(user_id):
-#     """Show user information"""
+@app.route('/users/<user_id>')
+def show_user_info(user_id):
+    """Show user information"""
 
-#     return render_template('')
+    return render_template('/user_detail.html')
 
 
 @app.route('/createincident', methods=['GET'])
