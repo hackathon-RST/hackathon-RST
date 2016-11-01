@@ -104,6 +104,9 @@ def show_inc_details():
 ############################################## 
 if __name__ == '__main__':
     connect_to_db(app)
+    #Flask debugger line below. Comment out when not troubleshooting.
+    app.debug = True
+    DebugToolbarExtension(app)
 
     app.run(debug=True, host='0.0.0.0')
 

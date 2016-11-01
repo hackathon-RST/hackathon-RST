@@ -10,14 +10,16 @@
         </head>
         <body>
             <nav class="navbar navbar-inverse">
-                {% if session['user_id'] is defined %}
+                <div class='logo'>Report@Work</div>
+
+                {% if 'user_id' not in session %}
                     <button type="button" class="btn btn-default navbar-btn sign-in-btn col-xs-offset-10"><a href="/login">Sign in</a></button>
                     <button type="button" class="btn btn-default navbar-btn register-btn"><a href="/register">Register</a></button>
-                {% endif %}
-                <div class='logo'>Report@Work</div>
-                {% if session['user_id'] is not defined %}
-                 <button type="button" class="btn btn-default navbar-btn create-incident-btn col-xs-offset-9"><a href="/createincident">Report Incident</a></button>
-                 <button type="button" class="btn btn-default navbar-btn create-incident-btn"><a href="/incidents">Incident Log</a></button>
+                {% else %}
+                
+
+                    <button type="button" class="btn btn-default navbar-btn create-incident-btn col-xs-offset-9"><a href="/createincident">Report Incident</a></button>
+                    <button type="button" class="btn btn-default navbar-btn create-incident-btn"><a href="/incidents">Incident Log</a></button>
                     <button type="button" class="btn btn-default navbar-btn sign-in-btn logout-btn">Logout</button>
                 {% endif %}
                 
