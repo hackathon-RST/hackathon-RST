@@ -303,8 +303,8 @@ SELECT pg_catalog.setval('transactions_trans_id_seq', 5, true);
 --
 
 COPY user_type (user_type_id, user_type) FROM stdin;
-1	{user}
-2	{hr}
+1	user
+2	hr
 \.
 
 

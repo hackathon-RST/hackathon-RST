@@ -43,9 +43,11 @@ def create_new_user():
         flash('This username has already been used.')
         return redirect('/register')
     else:
+        dbuser_type = UserType.query.filter(UserType.user_type == user_type).first()
+        dbuser_type_id = dbuser_type.user_type_id
         user = Users(user_name=user_name,
-                     password=password, 
-                     user_type=user_type)
+                     password=password,
+                     user_type_id=dbuser_type_id)
         db.session.add(user)
         db.session.commit()
         flash('You have been created!')
