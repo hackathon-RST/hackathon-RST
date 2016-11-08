@@ -61,7 +61,7 @@ def login():
     """User login."""
 
     if request.method == 'POST':
-        user_name = request.form.get('email-length')
+        user_name = request.form.get('username')
         password = request.form.get('password')
 
         dbuser = Users.query.filter(Users.user_name == user_name).first()
@@ -92,14 +92,21 @@ def create_new_incident():
     return render_template('newincident.html')
 
 
-
-
 @app.route('/incidents')
 def show_inc_details():
     """Show details on each incident."""
 
 
     return render_template('incidents.html')
+
+
+@app.route('/logout')
+def logout():
+    """Logout of session."""
+
+    session.pop('user_id', None)
+    flash('You are now logged out.')
+    return redirect('/login')
 
 ############################################## 
 if __name__ == '__main__':
