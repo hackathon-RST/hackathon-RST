@@ -78,11 +78,18 @@ def login():
     else:
         return render_template('login.html')
 
+
 @app.route('/users/<user_id>')
 def show_user_info(user_id):
     """Show user information"""
 
-    return render_template('/user_detail.html')
+    if 'user_id' in session:
+        user_details = Incidents.query.filter(Incidents.user_id == user_id).all()
+        return render_template('user_detail.html',
+                               user_details=user_details)
+    else:
+        flash('You are not logged in!')
+        return redirect('/login')
 
 
 @app.route('/createincident', methods=['GET'])
