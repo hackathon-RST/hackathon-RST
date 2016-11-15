@@ -81,7 +81,7 @@ def login():
 
 @app.route('/users/<user_id>')
 def show_user_info(user_id):
-    """Show user information"""
+    """Show general user information"""
 
     if 'user_id' in session:
         user_details = Incidents.query.filter(Incidents.user_id == user_id).all()
@@ -96,7 +96,18 @@ def show_user_info(user_id):
 def create_new_incident():
     """Create new incident to track/submit to HR."""
 
-    return render_template('newincident.html')
+    if 'user_id' in session:
+        return render_template('newincident.html')
+    else:
+        flash('Please log in to report an incident.')
+        return redirect('/login')
+
+@app.route('/save_incident', methods=['POST'])
+def save_incident():
+    """Save incident to database."""
+
+    pass
+
 
 
 @app.route('/incidents')
