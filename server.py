@@ -102,11 +102,16 @@ def create_new_incident():
         flash('Please log in to report an incident.')
         return redirect('/login')
 
+
 @app.route('/save_incident', methods=['POST'])
 def save_incident():
     """Save incident to database."""
 
-    pass
+    if 'user_id' in session:
+        user = session['user_id']
+        user_details = Users.query.filter(Users.user_id == user_id).first()
+        
+
 
 
 
